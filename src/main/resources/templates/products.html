@@ -53,14 +53,13 @@
         </tbody>
     </table>
     <form th:action="@{/products/add}"
-           method="get" class="form-horizontal">
+          method="get" class="form-horizontal">
 
         <div style="margin-top: 10px" class="form-group">
             <div class="col-sm-6 controls">
                 <button type="submit" class="btn bg-warning">Add</button>
             </div>
         </div>
-
 
     </form>
     <form th:action="@{/products/filter}"
@@ -80,20 +79,13 @@
     </form>
     <form class="form-control">
 
-        <div  style="margin-bottom: 10px" class="flex-sm-wrap">
-            <div class="col-sm-3 controls">
-                <span th:text="${'ID: ' +name}"/>
+        <div style="margin-bottom: 10px" class="flex-sm-wrap">
+            <div class="col-sm-5 controls">
+                <span th:text="${'Вы вошли как : ' +name}"/>
             </div>
         </div>
     </form>
-    <form class="form-control">
 
-        <div  style="margin-bottom: 10px" class="flex-sm-wrap">
-            <div class="col-sm-3 controls">
-                <span th:text="${'ID: ' +name}"/>
-            </div>
-        </div>
-    </form>
 
 
 </div>

@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional(readOnly = true)
 public class ProductService {
     private static ProductRepository productRepository;
 
@@ -28,7 +29,7 @@ public class ProductService {
         return productRepository.findOneByTitle(title);
     }
 
-
+    @Transactional(readOnly = false)
     public void replaceById(Long id, String title, int price) {
         productRepository.replaceProductById(id, title, price);
     }
@@ -37,18 +38,21 @@ public class ProductService {
         return (List<Product>) productRepository.findAll();
     }
 
+    @Transactional(readOnly = false)
     public void add(Product product) {
         productRepository.save(product);
     }
 
+    @Transactional(readOnly = false)
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
     }
-    public List<Product> sortListOnId(List<Product> list){
-       return list.stream().sorted(new Comparator<Product>() {
+
+    public List<Product> sortListOnId(List<Product> list) {
+        return list.stream().sorted(new Comparator<Product>() {
             @Override
             public int compare(Product o1, Product o2) {
-               return o1.getId().compareTo(o2.getId());
+                return o1.getId().compareTo(o2.getId());
             }
         }).collect(Collectors.toList());
     }

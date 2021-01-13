@@ -15,7 +15,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     public Product findOneById(Long id);
 
     @Modifying
-    @Transactional
     @Query("update Product p set p.title=?2, p.price=?3 where p.id=?1")
     public void replaceProductById(Long id, String title, int price);
 
